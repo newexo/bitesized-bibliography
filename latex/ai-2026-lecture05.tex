@@ -1,0 +1,344 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{Failure Modes of LLM Systems: Why They Break Even When They “Work”}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 5}
+
+\frame{
+\frametitle{Convincing Failure}
+The most dangerous failures are those that appear correct.
+\begin{itemize}
+\item Outputs are fluent and well-structured.
+\item Errors are embedded within plausible explanations.
+\item Confidence is simulated rather than earned.
+\item Users tend to trust coherent language.
+\item Failures require scrutiny to detect.
+\item The system fails in ways that resemble success.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Bridge from Phase 2}
+Structured workflows improve reliability but do not eliminate failure.
+\begin{itemize}
+\item Scaffolding improves reliability but not correctness.
+\item Transformation pipelines reduce risk but do not remove it.
+\item Role separation limits but does not stop error propagation.
+\item Systems remain probabilistic.
+\item Failures persist under complexity.
+\item Reliability remains conditional.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Taxonomy of Failure}
+Failures can be categorized into distinct types.
+\begin{itemize}
+\item Epistemic failures concern truth.
+\item Structural failures concern consistency.
+\item Process failures concern interaction.
+\item Each type requires different mitigation.
+\item Failures often overlap categories.
+\item Taxonomy enables diagnosis.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Epistemic Failures}
+Epistemic failures produce plausible but incorrect outputs.
+\begin{itemize}
+\item Statements are not grounded in data.
+\item Outputs appear analytical.
+\item Confidence is unrelated to correctness.
+\item Errors require verification to detect.
+\item Coherence masks inaccuracy.
+\item Truth is not internally validated.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Example: Fabricated Analysis}
+Models generate convincing but incorrect analytical conclusions.
+\begin{itemize}
+\item Trends inferred from insufficient data.
+\item Quantitative claims invented.
+\item Statistical reasoning simulated.
+\item Outputs resemble valid analysis.
+\item No numerical verification occurs.
+\item External validation is required.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Simulation vs Analysis}
+The model simulates reasoning rather than performing it.
+\begin{itemize}
+\item Pattern matching replaces computation.
+\item Language structure substitutes logic.
+\item Outputs mimic analytical formats.
+\item No execution of statistical methods.
+\item Results reflect training patterns.
+\item Plausibility replaces correctness.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Implications of Epistemic Failure}
+Epistemic failures are dangerous in analytical contexts.
+\begin{itemize}
+\item Research conclusions may be invalid.
+\item Decisions may be misled.
+\item Incorrect insights appear authoritative.
+\item Novices are especially vulnerable.
+\item Errors scale with trust.
+\item Verification becomes mandatory.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Fabrication and Hallucination}
+Models generate content that appears valid but is invented.
+\begin{itemize}
+\item Citations may not exist.
+\item References may be misattributed.
+\item Test outputs may be fabricated.
+\item Explanations lack grounding.
+\item Content appears complete.
+\item Uncertainty is not indicated.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Nature of Hallucination}
+Hallucinations follow predictable patterns.
+\begin{itemize}
+\item Occur when information is missing.
+\item Gaps are filled with patterns.
+\item Outputs reflect likelihood, not truth.
+\item Fluency increases credibility.
+\item Errors are systematic.
+\item Detection requires validation.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Structural Failures}
+Structural failures arise from inconsistency across components.
+\begin{itemize}
+\item Schema and code may misalign.
+\item Representations may diverge.
+\item Shared structure may be lost.
+\item Errors propagate through stages.
+\item Systems become incoherent.
+\item Correctness breaks across layers.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Example: Representation Drift}
+Complex systems reveal structural instability.
+\begin{itemize}
+\item JSON differs from implementation.
+\item Code violates defined structure.
+\item Tests fail from mismatches.
+\item Changes do not propagate.
+\item Systems become brittle.
+\item Alignment is lost over time.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Lack of Internal Consistency}
+Models do not enforce consistency across outputs.
+\begin{itemize}
+\item Each output is independent.
+\item No persistent internal model exists.
+\item Prior structure is not preserved.
+\item Alignment must be enforced externally.
+\item Consistency degrades without constraints.
+\item Structure is not automatic.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Process Failures}
+Process failures arise from the interaction itself.
+\begin{itemize}
+\item Conversations become unstable.
+\item Outputs drift from intent.
+\item Irrelevant content appears.
+\item Style degrades over time.
+\item Context becomes noisy.
+\item Workflow loses coherence.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Example: Context Drift}
+Extended interaction introduces instability.
+\begin{itemize}
+\item Instructions are forgotten.
+\item Irrelevant artifacts appear.
+\item Responses lose focus.
+\item Format becomes inconsistent.
+\item Errors influence future outputs.
+\item Conversation diverges.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Verbosity and Degradation}
+Output quality changes over time without control.
+\begin{itemize}
+\item Responses become longer.
+\item Precision decreases.
+\item Explanations expand unnecessarily.
+\item Formatting becomes inconsistent.
+\item Signal-to-noise decreases.
+\item User must constrain output.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Interaction Instability}
+The interaction itself introduces error.
+\begin{itemize}
+\item Responses condition future responses.
+\item Errors accumulate.
+\item Context mixes correct and incorrect data.
+\item Model cannot distinguish them.
+\item Feedback loops reinforce mistakes.
+\item Stability must be managed.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Silent Degradation}
+Errors accumulate without immediate detection.
+\begin{itemize}
+\item Early inaccuracies go unnoticed.
+\item Model reuses incorrect outputs.
+\item Errors compound.
+\item System appears consistent.
+\item Detection becomes difficult.
+\item Failures emerge late.
+\end{itemize}
+}
+
+\frame{
+\frametitle{User Silence as Reinforcement}
+Lack of correction reinforces errors.
+\begin{itemize}
+\item Incorrect outputs are accepted.
+\item Model adapts to perceived approval.
+\item Errors persist in future outputs.
+\item Mistakes become entrenched.
+\item Oversight is required.
+\item Correction must be explicit.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Why Failures Occur}
+Failures derive from fundamental system limitations.
+\begin{itemize}
+\item No internal model of truth exists.
+\item No persistent state is maintained.
+\item No verification mechanism is present.
+\item Outputs are generated token-by-token.
+\item Correctness is not evaluated.
+\item Consistency is not enforced.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Core Conclusion}
+Reliability must be imposed rather than assumed.
+\begin{itemize}
+\item Structure reduces error.
+\item Verification must be external.
+\item Constraints must be explicit.
+\item Oversight must be continuous.
+\item Systems must anticipate failure.
+\item Trust requires validation.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Practical Implications}
+Effective use requires disciplined control.
+\begin{itemize}
+\item Verify outputs against sources.
+\item Use structured inputs.
+\item Restart conversations when needed.
+\item Limit context to relevance.
+\item Treat outputs as drafts.
+\item Do not trust fluency.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Operational Rules}
+A set of rules mitigates common failures.
+\begin{itemize}
+\item Ground work in real data.
+\item Constrain outputs explicitly.
+\item Separate roles and tasks.
+\item Validate at each stage.
+\item Detect errors early.
+\item Maintain workflow control.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Synthesis}
+Failures are predictable and systematic.
+\begin{itemize}
+\item Epistemic failures distort truth.
+\item Structural failures break systems.
+\item Process failures destabilize workflows.
+\item All are inherent to the system.
+\item None are eliminated by scale.
+\item All require external control.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Transition to Lecture 6}
+Failures extend beyond individual use into larger systems.
+\begin{itemize}
+\item Writing errors become misinformation.
+\item Code errors become system failures.
+\item Analysis errors become decisions.
+\item Risks increase at scale.
+\item Systems amplify failure impact.
+\item Next topic is security and governance.
+\end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}

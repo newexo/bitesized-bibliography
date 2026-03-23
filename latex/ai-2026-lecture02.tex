@@ -1,0 +1,304 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{Writing and Thinking with LLMs: Discipline Over Convenience}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 2}
+
+\frame
+{
+   \frametitle{Writing Is a Commodity, Thinking Is Not}
+
+    Writing tasks are now easy to automate, but thinking remains scarce.
+
+    \begin{itemize}
+        \item Large language models can generate essays, summaries, and reports on demand.
+        \item The barrier to producing polished text has effectively disappeared.
+        \item Superficial fluency is no longer a meaningful indicator of skill.
+        \item Audiences are increasingly familiar with AI-generated patterns.
+        \item Low-quality outputs are recognizable despite surface polish.
+        \item Differentiation has shifted from producing text to producing insight.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{The Collapse of Naive Writing Tasks}
+
+    Traditional writing tasks no longer reliably measure competence.
+
+    \begin{itemize}
+        \item One-page essays, memos, and summaries can be generated instantly.
+        \item Standard corporate formats are easily replicated by LLMs.
+        \item These outputs have become commoditized across organizations.
+        \item Readers can detect generic or formulaic AI-generated content.
+        \item The presence of text no longer implies understanding or effort.
+        \item Evaluation shifts from whether it was written to whether it is meaningful.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{The Corporate Reality of Communication}
+
+    Effective writing in professional contexts depends on clarity and credibility.
+
+    \begin{itemize}
+        \item Most stakeholders do not read long documents in detail.
+        \item Careful readers evaluate quality immediately.
+        \item Generic or verbose content undermines credibility.
+        \item AI-generated patterns are increasingly recognizable in business settings.
+        \item Influence depends on clarity of thought rather than quantity of text.
+        \item Writing must support real-time communication and decision-making.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{The New Role of the Human}
+
+    The human role shifts from generating text to directing and evaluating it.
+
+    \begin{itemize}
+        \item Humans must define the problem and interpret results.
+        \item Real-time thinking remains essential in meetings and presentations.
+        \item Arguments must be formed independently of the tool.
+        \item LLMs cannot replace dynamic, context-sensitive responses.
+        \item The user is responsible for coherence and correctness.
+        \item The tool amplifies capability but does not replace judgment.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Analogy: Thinking Without Assistance}
+
+    Human cognition must remain functional without constant tool support.
+
+    \begin{itemize}
+        \item Tools assist but are not always available in real-time situations.
+        \item Presentations and discussions require immediate reasoning.
+        \item Internal competence enables effective use of external tools.
+        \item Reliance without understanding leads to failure under pressure.
+        \item Mastery requires both tool use and independent capability.
+        \item The tool is an extension rather than a substitute for cognition.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Grounded Writing: Start with Sources}
+
+    Effective writing begins with grounding in real information.
+
+    \begin{itemize}
+        \item Conduct a literature or document search relevant to the topic.
+        \item Review abstracts and summaries to assess relevance.
+        \item Select high-quality academic, industry, or news sources.
+        \item Avoid beginning with open-ended prompts to the model.
+        \item Use external information to constrain the model’s output.
+        \item Establish factual grounding before generating text.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Grounded Writing: Input Real Content}
+
+    The model should operate on real documents rather than free-form prompts.
+
+    \begin{itemize}
+        \item Provide PDFs, articles, or curated text as input.
+        \item Extract key elements such as titles, authors, and sections.
+        \item Request structured summaries of each source.
+        \item Ensure the model operates within provided material.
+        \item Reduce reliance on the model’s internal distribution.
+        \item Treat the model as a processor of information, not a source.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Grounded Writing: Build Structure}
+
+    Structured summaries create a stable foundation for writing.
+
+    \begin{itemize}
+        \item Compile an annotated bibliography from selected sources.
+        \item Generate concise summaries for each reference.
+        \item Maintain consistent citation formats.
+        \item Use structured outputs to organize information.
+        \item Create reusable reference sets for future work.
+        \item Build a foundation before drafting content.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Controlling the Model: Explicit Instruction}
+
+    Clear instruction is required to constrain model behavior.
+
+    \begin{itemize}
+        \item Instruct the model to avoid meta text and unnecessary commentary.
+        \item Specify stylistic constraints such as tone and voice.
+        \item Prohibit unwanted formatting unless explicitly needed.
+        \item Define structure and output expectations clearly.
+        \item Reinforce constraints repeatedly when necessary.
+        \item Treat instruction as an ongoing process.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Controlling the Model: Active Correction}
+
+    Users must intervene actively to maintain correctness and relevance.
+
+    \begin{itemize}
+        \item Identify and call out hallucinations immediately.
+        \item Reject outputs that deviate from the task.
+        \item Reinforce boundaries when the model drifts.
+        \item Do not accept partially correct responses.
+        \item Guide the model back to the intended objective.
+        \item Maintain control over the conversation direction.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Controlling the Model: Multiple Conversations}
+
+    Separating tasks into distinct contexts improves reliability.
+
+    \begin{itemize}
+        \item Use one conversation for content generation.
+        \item Use another for editing and critique.
+        \item Assign distinct roles to each interaction.
+        \item Prevent context contamination between tasks.
+        \item Maintain focused and manageable interactions.
+        \item Treat conversations as components of a workflow.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Question-Driven Writing Method}
+
+    Writing improves when used to structure thinking rather than replace it.
+
+    \begin{itemize}
+        \item Define the topic and provide relevant sources.
+        \item Ask the model to generate structured questions.
+        \item Use these questions to guide your thinking.
+        \item Answer each question independently.
+        \item Build content from your own responses.
+        \item Ensure ideas originate from the human.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Incremental Drafting}
+
+    Documents should be built in controlled sections rather than generated at once.
+
+    \begin{itemize}
+        \item Draft one section at a time.
+        \item Provide context and constraints for each section.
+        \item Avoid generating full documents in a single prompt.
+        \item Maintain control over structure and progression.
+        \item Reduce drift and inconsistency.
+        \item Assemble sections into a coherent whole.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Iterative Refinement: Improving Quality}
+
+    High-quality writing emerges through repeated evaluation and revision.
+
+    \begin{itemize}
+        \item Remove redundant content across sections.
+        \item Ensure consistent tone and voice.
+        \item Eliminate generic or formulaic phrasing.
+        \item Improve clarity and precision of language.
+        \item Review transitions between sections.
+        \item Perform multiple refinement passes.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Iterative Refinement: Multi-Model Review}
+
+    Using multiple models can improve detection of weaknesses.
+
+    \begin{itemize}
+        \item Use a second model for critique and analysis.
+        \item Identify patterns typical of AI-generated text.
+        \item Focus on sentence-level improvements.
+        \item Detect verbosity and repetition.
+        \item Apply targeted refinements.
+        \item Combine strengths of different systems.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Ethical Boundary: Ownership and Attribution}
+
+    LLM use introduces questions about authorship and responsibility.
+
+    \begin{itemize}
+        \item Fully generated content presented as original is plagiarism.
+        \item Editing self-authored content is acceptable.
+        \item Intermediate cases require careful judgment.
+        \item Ownership depends on origin of ideas.
+        \item Proper citation may be necessary.
+        \item Ethical use requires transparency.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Discussion}
+
+    Writing with LLMs requires discipline and structured control.
+
+    \begin{itemize}
+        \item LLMs are powerful but unreliable without constraints.
+        \item Quality depends on grounding in real information.
+        \item Structure and workflow determine reliability.
+        \item Human oversight is required at every stage.
+        \item Effective use depends on discipline, not convenience.
+        \item Advantage comes from directing and constraining the tool.
+    \end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}

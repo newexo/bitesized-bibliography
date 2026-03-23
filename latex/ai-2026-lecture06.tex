@@ -1,0 +1,331 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{Security and Risk in LLM Systems: Data, Leakage, and Adversarial Use}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 6}
+
+\frame{
+\frametitle{LLMs as Data Systems}
+LLMs must be understood as data-processing systems with security implications.
+\begin{itemize}
+\item They ingest and transform large volumes of data.
+\item They may reproduce patterns from training data.
+\item They blur boundaries between input and output.
+\item They function as probabilistic data interfaces.
+\item They introduce risks through normal usage.
+\item They must be treated as data systems.
+\end{itemize}
+}
+
+\frame{
+\frametitle{From Failure to Security Risk}
+Failures in LLMs naturally become security concerns.
+\begin{itemize}
+\item Incorrect outputs may expose sensitive information.
+\item Hallucinations may misrepresent internal data.
+\item Misuse may cause unintended disclosure.
+\item Errors scale across many users.
+\item Risk accumulates over time.
+\item Reliability becomes governance.
+\end{itemize}
+}
+
+\frame{
+\frametitle{The Data Problem}
+LLMs are trained on large datasets with limited transparency.
+\begin{itemize}
+\item Training sources are not fully disclosed.
+\item Data may include sensitive material.
+\item Provenance of information is unclear.
+\item Users cannot inspect training data.
+\item Boundaries of knowledge are unknown.
+\item Exposure risk exists without direct input.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Unknown Exposure Risk}
+The model may reproduce data without visibility.
+\begin{itemize}
+\item Memorized fragments may appear.
+\item Sensitive patterns may exist in weights.
+\item Outputs may reflect training data.
+\item Reproduction occurs under certain prompts.
+\item Risk is probabilistic.
+\item Verification is not possible.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Data Leakage Through Usage}
+User interaction creates additional exposure pathways.
+\begin{itemize}
+\item Conversations may be logged.
+\item Inputs may be retained.
+\item Users may share sensitive information.
+\item Internal processes may be exposed.
+\item Proprietary data may leave boundaries.
+\item Data lifecycle is unclear.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Input as Future Risk}
+User inputs may influence future system behavior.
+\begin{itemize}
+\item Inputs may persist across sessions.
+\item Data may enter training pipelines.
+\item Patterns may be generalized.
+\item Future outputs may reflect prior inputs.
+\item Boundaries between input and training blur.
+\item Users contribute to system knowledge.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Model Inversion Attacks}
+Attackers can extract data through systematic probing.
+\begin{itemize}
+\item Repeated queries reveal patterns.
+\item Sensitive data can be reconstructed.
+\item Outputs are refined iteratively.
+\item Memorization can be exploited.
+\item Statistical methods guide extraction.
+\item The model becomes a target.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Extraction Techniques}
+Specific techniques increase attack effectiveness.
+\begin{itemize}
+\item Contextual escalation narrows targets.
+\item Query saturation expands coverage.
+\item Low-temperature sampling stabilizes output.
+\item Prompt chaining refines results.
+\item Repetition amplifies signals.
+\item Iterative probing reconstructs data.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Model as Probeable System}
+The model behaves like a weakly protected database.
+\begin{itemize}
+\item It responds to structured queries.
+\item It lacks strict access control.
+\item It cannot detect user intent.
+\item Information may leak across sessions.
+\item Outputs expose latent knowledge.
+\item Reconstruction occurs over time.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Adversarial Use of LLMs}
+LLMs enable malicious applications at scale.
+\begin{itemize}
+\item Phishing and scam messages can be generated.
+\item Social engineering scripts can be created.
+\item Malware development may be assisted.
+\item Reconnaissance tasks can be automated.
+\item Attack content scales easily.
+\item Barriers to misuse are reduced.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Dual-Use Capability}
+LLMs support both beneficial and harmful uses.
+\begin{itemize}
+\item Security teams use models for analysis.
+\item Attackers use models for automation.
+\item Knowledge becomes widely accessible.
+\item Expertise is commoditized.
+\item Capabilities scale across users.
+\item Risk increases with accessibility.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Organizational Security Risk}
+Organizations face direct exposure through usage.
+\begin{itemize}
+\item Confidential data may be leaked.
+\item Internal workflows may be exposed.
+\item Credentials may be revealed.
+\item Data boundaries are difficult to enforce.
+\item Attack surface increases.
+\item Monitoring is incomplete.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Compliance Risk}
+LLMs introduce regulatory challenges.
+\begin{itemize}
+\item GDPR and CCPA violations may occur.
+\item Data retention policies are unclear.
+\item Data processing control is limited.
+\item Auditing is difficult.
+\item Unauthorized transfer may occur.
+\item Legal liability increases.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Trust Risk}
+Model behavior affects organizational trust.
+\begin{itemize}
+\item Outputs may be incorrect.
+\item Behavior may be inconsistent.
+\item Decisions are hard to explain.
+\item Users may overtrust outputs.
+\item Failures damage reputation.
+\item Confidence may degrade.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Enterprise Requirements}
+Organizations require strong governance properties.
+\begin{itemize}
+\item Systems must be auditable.
+\item Data flows must be controlled.
+\item Decisions must be traceable.
+\item Behavior must be reproducible.
+\item Accountability must be enforced.
+\item Risk must be measurable.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Fundamental Misalignment}
+LLMs conflict with enterprise expectations.
+\begin{itemize}
+\item Internal processes are opaque.
+\item Outputs are probabilistic.
+\item No inherent audit trail exists.
+\item Reproducibility is not guaranteed.
+\item Control mechanisms are limited.
+\item Explainability is weak.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Policy Mitigation}
+Policies reduce exposure risk.
+\begin{itemize}
+\item Restrict sensitive data entry.
+\item Define confidential information categories.
+\item Establish usage guidelines.
+\item Enforce system boundaries.
+\item Align with risk tolerance.
+\item Require compliance standards.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Training Mitigation}
+User education is essential.
+\begin{itemize}
+\item Train users on risks.
+\item Demonstrate failure cases.
+\item Encourage cautious input.
+\item Promote output verification.
+\item Build awareness of exposure.
+\item Develop literacy.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Technical Controls}
+Systems must enforce constraints programmatically.
+\begin{itemize}
+\item Disable data sharing when possible.
+\item Monitor interactions.
+\item Implement access controls.
+\item Filter sensitive data.
+\item Use secure environments.
+\item Limit external exposure.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Structural Insight}
+Risks arise from system design.
+\begin{itemize}
+\item Data exposure is inherent.
+\item Interaction creates risk.
+\item Adversaries exploit properties.
+\item Risks scale with usage.
+\item Problems persist across contexts.
+\item Mitigation must be systemic.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Synthesis}
+LLM risk is structural rather than incidental.
+\begin{itemize}
+\item It originates in training opacity.
+\item It emerges through interaction.
+\item It is amplified by adversaries.
+\item It cannot be eliminated.
+\item It must be managed continuously.
+\item It requires layered controls.
+\end{itemize}
+}
+
+\frame{
+\frametitle{LLM Governance}
+LLMs must be treated as governed systems.
+\begin{itemize}
+\item They process sensitive data.
+\item They introduce measurable risk.
+\item They require explicit controls.
+\item They must meet enterprise standards.
+\item They need monitoring.
+\item They require oversight.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Discussion}
+LLMs must be integrated into enterprise governance frameworks.
+\begin{itemize}
+\item Policy frameworks are required.
+\item Architectural constraints must exist.
+\item Auditability is necessary.
+\item Compliance integration is required.
+\item Operational oversight is essential.
+\item Systems become infrastructure.
+\end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}

@@ -1,0 +1,344 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{Engineering with LLMs: From Prompting to Structured Systems}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 3}
+
+\frame{
+\frametitle{Failures Are Engineering Failures}
+Most failures with LLMs arise from lack of structure rather than model limits.
+\begin{itemize}
+\item LLMs are unreliable when used without constraints.
+\item Naive prompting produces inconsistent and incorrect outputs.
+\item Failures often result from poor workflow design.
+\item Writing discipline applies directly to engineering practice.
+\item Reliability must be deliberately engineered.
+\item The problem is lack of structure, not lack of intelligence.
+\end{itemize}
+}
+
+\frame{
+\frametitle{From Writing Discipline to System Design}
+Disciplined writing principles translate directly into engineering workflows.
+\begin{itemize}
+\item Grounding reduces hallucination.
+\item Structure reduces ambiguity.
+\item Iteration improves correctness.
+\item Constraints guide output quality.
+\item Principles must be formalized into systems.
+\item Engineering replaces ad hoc prompting with processes.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Reframing the Interaction}
+LLM usage should be treated as a sequence of transformations.
+\begin{itemize}
+\item Naive approach relies on single prompts.
+\item Structured approach uses staged pipelines.
+\item Each stage constrains the output.
+\item Outputs feed into subsequent steps.
+\item The process becomes inspectable.
+\item Engineering replaces guessing with control.
+\end{itemize}
+}
+
+\frame{
+\frametitle{The Pipeline Model}
+Structured pipelines decompose complex tasks into stages.
+\begin{itemize}
+\item Begin with natural language problem definition.
+\item Construct domain models explicitly.
+\item Specify schemas to constrain structure.
+\item Generate implementation code.
+\item Produce tests for validation.
+\item Each step increases precision.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Example Transformation Pipeline}
+Engineering workflows follow explicit staged transformations.
+\begin{itemize}
+\item Natural language becomes domain concepts.
+\item Domain concepts become structured schemas.
+\item Schemas become typed models.
+\item Models become implementation code.
+\item Code becomes validated through tests.
+\item Each stage is reviewable and explicit.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Conversational Grounding as First Step}
+Engineering workflows must begin with explicit grounding.
+\begin{itemize}
+\item Explain the domain before generating outputs.
+\item Require restatement of key concepts.
+\item Validate terminology and definitions.
+\item Avoid premature implementation.
+\item Establish shared understanding.
+\item Grounding constrains the solution space.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Why Grounding Matters}
+Correct outputs depend on correct conceptual alignment.
+\begin{itemize}
+\item Misunderstood domains lead to incorrect outputs.
+\item Early errors propagate through pipelines.
+\item Grounding prevents compounding mistakes.
+\item Alignment reduces downstream corrections.
+\item Early validation is low-cost.
+\item Correctness begins before coding.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Structured Representations}
+Engineering requires moving from ambiguity to precision.
+\begin{itemize}
+\item Natural language is inherently ambiguous.
+\item Tables introduce structured organization.
+\item JSON enforces explicit fields.
+\item Typed models enforce constraints.
+\item Each step reduces interpretive freedom.
+\item Precision improves reliability.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Representation Progression}
+A sequence of representations improves clarity.
+\begin{itemize}
+\item Natural language is flexible but vague.
+\item Tables provide structured readability.
+\item JSON enables machine-readable precision.
+\item Typed models enforce validation rules.
+\item Each stage eliminates ambiguity.
+\item Transformation is the core strength.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Transformations Over Generation}
+Reliability comes from transforming structured data.
+\begin{itemize}
+\item Unconstrained generation introduces variability.
+\item Transformation preserves structure.
+\item Structured inputs reduce hallucination.
+\item Intermediate steps enable validation.
+\item Each stage can be tested.
+\item Reliability emerges from transitions.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Test-Driven Development with LLMs}
+Tests should constrain system behavior early.
+\begin{itemize}
+\item Generate tests alongside implementation.
+\item Tests define expected behavior.
+\item Tests constrain future outputs.
+\item Implementation follows specifications.
+\item Early validation reduces errors.
+\item Tests clarify vague requirements.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Risks in LLM-Generated Tests}
+Generated tests can reinforce incorrect assumptions.
+\begin{itemize}
+\item Models may validate their own mistakes.
+\item Tests can encode flawed logic.
+\item Passing tests can create false confidence.
+\item Human review is required.
+\item Tests must reflect real requirements.
+\item Validation must precede trust.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Human Ownership of Tests}
+Tests must be treated as authoritative human specifications.
+\begin{itemize}
+\item Review all generated tests carefully.
+\item Ensure alignment with intended behavior.
+\item Reject incorrect assumptions.
+\item Modify tests before use.
+\item Treat tests as ground truth.
+\item Do not outsource correctness.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Role Separation in Workflows}
+Different engineering roles must be separated.
+\begin{itemize}
+\item Architect defines structure.
+\item Coder implements specifications.
+\item Reviewer evaluates outputs.
+\item Roles operate independently.
+\item Avoid mixing responsibilities.
+\item Separation reduces errors.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Separation of Concerns}
+Classical engineering principles apply directly to LLM workflows.
+\begin{itemize}
+\item Do not combine design and implementation.
+\item Maintain clear stage boundaries.
+\item Use separate interactions for roles.
+\item Avoid reinforcing feedback loops.
+\item Preserve independent evaluation.
+\item Structure reduces confusion.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Managing Context and Drift}
+Long interactions degrade output quality.
+\begin{itemize}
+\item Models inherit earlier mistakes.
+\item Context accumulates noise.
+\item Drift causes inconsistency.
+\item Long sessions reduce reliability.
+\item Errors become hidden.
+\item Context requires management.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Practices for Controlling Context}
+Context must be explicitly controlled in workflows.
+\begin{itemize}
+\item Restart conversations frequently.
+\item Isolate tasks into sessions.
+\item Avoid long histories.
+\item Provide only relevant information.
+\item Remove outdated context.
+\item Treat context as input.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Context as a Liability}
+Uncontrolled context reduces reliability.
+\begin{itemize}
+\item More context does not improve results.
+\item Irrelevant data causes confusion.
+\item Early mistakes propagate forward.
+\item Models cannot filter noise reliably.
+\item Precision requires selective input.
+\item Constraints improve performance.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Multi-Model Workflows}
+Different models can serve different roles.
+\begin{itemize}
+\item One model generates outputs.
+\item Another evaluates outputs.
+\item Models specialize in tasks.
+\item Combining models increases robustness.
+\item Cross-checking reduces errors.
+\item Avoid reliance on a single model.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Models as Specialized Tools}
+LLMs should be treated as tools with strengths and limits.
+\begin{itemize}
+\item Some models excel at generation.
+\item Others excel at critique.
+\item Selection depends on task.
+\item Combine complementary capabilities.
+\item Tool composition improves results.
+\item Orchestration replaces reliance.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Structured System Design in Practice}
+Structured engineering principles appear in real systems.
+\begin{itemize}
+\item Domain modeling precedes implementation.
+\item Commands define system behavior.
+\item Schemas replace ambiguity.
+\item Deterministic workflows ensure reproducibility.
+\item Context is constructed explicitly.
+\item Systems operate on structured transformations.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Bounded Contexts and Separation}
+Clear system boundaries improve reliability.
+\begin{itemize}
+\item Separate domains for key functions.
+\item Avoid shared mutable state.
+\item Use explicit interfaces.
+\item Orchestrate at higher layers.
+\item Independence improves clarity.
+\item Structure prevents coupling.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Discussion}
+Engineering with LLMs requires structured system design.
+\begin{itemize}
+\item Reliability comes from staged transformations.
+\item Grounding reduces ambiguity.
+\item Tests enforce correctness.
+\item Role separation improves clarity.
+\item Context must be controlled.
+\item Systems outperform prompts.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Final Remarks}
+Engineering introduces structure but systems must operate over time.
+\begin{itemize}
+\item How do workflows scale in practice.
+\item How do systems evolve with use.
+\item What happens under long-term operation.
+\item How is state maintained across interactions.
+\item How do errors accumulate over time.
+\item Next step is systems over time.
+\end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}
