@@ -1,0 +1,344 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{The Icosahedron Experiment: What Actually Works in Practice}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 4}
+
+\frame{
+\frametitle{Empirical, Not Theoretical}
+This lecture is grounded in sustained experimentation rather than theory.
+\begin{itemize}
+\item Eleven structured working sessions were conducted.
+\item Multiple domains were explored including probability and systems.
+\item Iterative refinement occurred across attempts.
+\item Approaches were continuously compared.
+\item Failures were analyzed rather than ignored.
+\item Focus remained on what works in practice.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Purpose of the Experiment}
+The goal of the experiment was evaluation rather than exploration.
+\begin{itemize}
+\item Identify repeatable success patterns.
+\item Identify consistent failure modes.
+\item Distinguish illusion of correctness from real correctness.
+\item Move from anecdotal success to systematic method.
+\item Replace intuition with evidence.
+\item Establish operational principles.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Initial Expectations}
+Initial assumptions reflected common intuitions about LLMs.
+\begin{itemize}
+\item Provide a clear description of the task.
+\item Receive working code as output.
+\item Expect minimal iteration.
+\item Assume internal reasoning by the model.
+\item Expect outputs to be reliable.
+\item Treat prompting as sufficient.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Observed Reality}
+Actual behavior diverged significantly from expectations.
+\begin{itemize}
+\item Outputs were inconsistent across runs.
+\item Logical errors appeared frequently.
+\item Systems were brittle under small changes.
+\item Outputs appeared correct but were not.
+\item Internal reasoning was opaque.
+\item Small ambiguities caused large failures.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Core Insight from Early Failures}
+Early failures revealed a central principle about system behavior.
+\begin{itemize}
+\item Lack of constraints leads to variability.
+\item Ambiguity propagates through outputs.
+\item Models fill gaps with plausible logic.
+\item Surface fluency hides deeper errors.
+\item Prompting alone cannot ensure reliability.
+\item Structure is required for stability.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Failure Case 1: Procedural Logic}
+A simple generator exposed weaknesses in unstructured interaction.
+\begin{itemize}
+\item Probability distributions were incorrect.
+\item Validation outputs were fabricated.
+\item Surface correctness masked deeper flaws.
+\item Reasoning was inconsistent across attempts.
+\item Outputs varied unpredictably.
+\item Results lacked reproducibility.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Diagnosis of Failure Case 1}
+The failure resulted from absence of structure rather than complexity.
+\begin{itemize}
+\item No explicit schema defined behavior.
+\item Domain rules were not grounded.
+\item Constraints were not specified.
+\item No intermediate validation occurred.
+\item Logic was inferred instead of defined.
+\item Ambiguity remained unresolved.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Failure Case 2: Hierarchical Complexity}
+A more complex system revealed deeper structural issues.
+\begin{itemize}
+\item Class hierarchies were inconsistent.
+\item JSON and code representations diverged.
+\item Tests failed due to mismatches.
+\item Representations became misaligned.
+\item Fragility increased with complexity.
+\item System coherence degraded over time.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Diagnosis of Failure Case 2}
+The primary issue was misalignment across representations.
+\begin{itemize}
+\item No unified schema linked layers.
+\item Representations evolved independently.
+\item Consistency was not maintained.
+\item No single source of truth existed.
+\item Errors amplified with complexity.
+\item Alignment was not enforced.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Transition: What Works Instead}
+Failures revealed a consistent pattern of success and failure.
+\begin{itemize}
+\item Unstructured generation produces failure.
+\item Structured transformation produces reliability.
+\item Variability decreases with constraint.
+\item Explicit steps improve control.
+\item Structure enables validation.
+\item The approach shifted to scaffolding.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Success Case: Layered Scaffolding}
+A structured workflow demonstrated stable performance.
+\begin{itemize}
+\item Natural language defined the domain.
+\item Concepts were expressed as tables.
+\item Tables were converted to JSON.
+\item JSON was mapped to typed models.
+\item Models produced implementation code.
+\item Code was validated with tests.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Key Insight from Success}
+Successful systems shared a common structural property.
+\begin{itemize}
+\item Each layer constrained the next.
+\item Ambiguity decreased step by step.
+\item Representations remained aligned.
+\item Errors were detected early.
+\item Outputs became predictable.
+\item Stability emerged from structure.
+\end{itemize}
+}
+
+\frame{
+\frametitle{The Scaffolding Model}
+The experiment formalized a repeatable method.
+\begin{itemize}
+\item Priming defines domain and vocabulary.
+\item Grounding introduces structured representations.
+\item Decomposition breaks tasks into parts.
+\item Each stage constrains the next.
+\item Steps are sequenced explicitly.
+\item The process becomes repeatable.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Scaffolding Is Required}
+Scaffolding is necessary rather than optional.
+\begin{itemize}
+\item Without priming the domain is misunderstood.
+\item Without grounding ambiguity persists.
+\item Without decomposition complexity overwhelms.
+\item All components are required.
+\item Skipping steps reintroduces failure.
+\item Reliability depends on structure.
+\end{itemize}
+}
+
+\frame{
+\frametitle{LLM as Pair Programmer}
+The model behaves similarly to a junior developer.
+\begin{itemize}
+\item It is capable but inconsistent.
+\item It requires supervision.
+\item It performs well with clear instructions.
+\item It struggles with ambiguity.
+\item It benefits from iterative feedback.
+\item It does not ensure correctness alone.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Role Mapping}
+Effective collaboration follows structured roles.
+\begin{itemize}
+\item The human defines direction.
+\item The model executes transformations.
+\item Roles may shift depending on context.
+\item Feedback is continuous.
+\item Validation remains human responsibility.
+\item Oversight is always required.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Practical Workflow}
+A consistent workflow emerged from repeated sessions.
+\begin{itemize}
+\item Define the schema explicitly.
+\item Generate structured representations.
+\item Produce implementation code.
+\item Generate validation tests.
+\item Review outputs carefully.
+\item Refine iteratively.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Critical Constraint}
+Large tasks must be decomposed into smaller steps.
+\begin{itemize}
+\item Complexity overwhelms the model.
+\item Errors compound without visibility.
+\item Validation becomes impossible.
+\item Decomposition enables control.
+\item Smaller steps improve accuracy.
+\item Structure enables correctness.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Connection to System Design}
+The findings align with established engineering principles.
+\begin{itemize}
+\item Systems require explicit structure.
+\item Boundaries reduce complexity.
+\item Representations must align.
+\item Determinism improves reliability.
+\item Separation of concerns is essential.
+\item Architecture governs behavior.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Implications for Developers}
+Benefits vary depending on experience level.
+\begin{itemize}
+\item Experienced developers gain productivity.
+\item They can evaluate outputs effectively.
+\item They understand decomposition.
+\item They recognize subtle errors.
+\item They enforce constraints.
+\item They control system behavior.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Risks for Novices}
+Inexperience increases the likelihood of failure.
+\begin{itemize}
+\item Over-trust in generated outputs occurs.
+\item Logical errors go undetected.
+\item Workflows remain unstructured.
+\item Plausible results are misinterpreted.
+\item Systems become fragile.
+\item Reliability decreases significantly.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Required Skills}
+Effective use requires new engineering competencies.
+\begin{itemize}
+\item Prompt structuring is necessary.
+\item Representation design is critical.
+\item Task decomposition is required.
+\item Output evaluation is essential.
+\item Iterative refinement is standard.
+\item Skills focus on engineering discipline.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Synthesis of the Experiment}
+The experiment leads to a clear conclusion.
+\begin{itemize}
+\item LLMs are not reliable by default.
+\item Reliability comes from structured workflows.
+\item Scaffolding stabilizes behavior.
+\item Engineering replaces prompting.
+\item Systems outperform ad hoc interaction.
+\item Structure determines success.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Transition to Phase 3}
+Even structured systems encounter limitations at scale.
+\begin{itemize}
+\item Failures still occur under complexity.
+\item Scaling introduces new risks.
+\item Reliability becomes systemic.
+\item Errors become harder to detect.
+\item Systems evolve over time.
+\item Next focus is failure at scale.
+\end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}

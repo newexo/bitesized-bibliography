@@ -1,0 +1,344 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{Agentic AI: From Prompting to Systems That Act}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 7}
+
+\frame{
+\frametitle{The Problem with Agentic AI}
+Most discussions of agentic AI ignore necessary system constraints.
+\begin{itemize}
+\item Agents are framed as autonomous actors.
+\item Narratives emphasize independence.
+\item Real systems require boundaries.
+\item Unconstrained autonomy amplifies risk.
+\item LLM unreliability persists.
+\item Autonomy without control is dangerous.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Bridge from Failure to Agency}
+Agentic systems inherit all prior failure modes.
+\begin{itemize}
+\item Hallucination persists in agents.
+\item Structural inconsistency compounds.
+\item Context drift worsens.
+\item Silent errors propagate.
+\item Failures become harder to detect.
+\item Complexity increases instability.
+\end{itemize}
+}
+
+\frame{
+\frametitle{What Is Agentic AI}
+Agentic AI performs structured multi-step actions.
+\begin{itemize}
+\item Maintains state across interactions.
+\item Executes sequences of tasks.
+\item Interacts with external systems.
+\item Coordinates tools and processes.
+\item Operates over workflows.
+\item Transforms inputs across stages.
+\end{itemize}
+}
+
+\frame{
+\frametitle{From Sequences to Systems}
+Agentic AI extends simple transformations into systems.
+\begin{itemize}
+\item Prompts become pipelines.
+\item Conversations become workflows.
+\item Outputs feed forward.
+\item State accumulates.
+\item Systems become iterative.
+\item Complexity increases.
+\end{itemize}
+}
+
+\frame{
+\frametitle{The Illusion of Autonomy}
+Claims of autonomy ignore known limitations.
+\begin{itemize}
+\item Models do not understand tasks.
+\item They cannot validate correctness.
+\item They hallucinate under uncertainty.
+\item They drift over time.
+\item They require constraints.
+\item Autonomy amplifies weakness.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Reality Check from Practice}
+Empirical results contradict autonomy claims.
+\begin{itemize}
+\item Unstructured systems are brittle.
+\item Logical errors persist.
+\item Systems degrade over time.
+\item Failures are silent.
+\item Correction requires control.
+\item Reliability is conditional.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Amplified Weakness}
+Agents amplify underlying model limitations.
+\begin{itemize}
+\item More steps increase failure points.
+\item Errors propagate across stages.
+\item Feedback loops reinforce mistakes.
+\item Context growth destabilizes.
+\item Validation is absent.
+\item Complexity multiplies risk.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Agents as Workflows}
+Agentic systems are structured workflows.
+\begin{itemize}
+\item Tasks are decomposed.
+\item Outputs are structured.
+\item Steps are sequenced.
+\item Transformations are explicit.
+\item State transitions are controlled.
+\item Workflows replace prompts.
+\end{itemize}
+}
+
+\frame{
+\frametitle{From Prompting to Pipelines}
+The shift is toward engineered processes.
+\begin{itemize}
+\item Natural language defines domain.
+\item Domain becomes schema.
+\item Schema becomes artifacts.
+\item Artifacts are validated.
+\item Each step constrains output.
+\item Structure ensures reliability.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Role-Based Architecture}
+Roles define system behavior across stages.
+\begin{itemize}
+\item Architect defines structure.
+\item Generator produces output.
+\item Validator checks results.
+\item Reviewer evaluates quality.
+\item Orchestrator coordinates.
+\item Roles enforce separation.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Multi-Agent Patterns}
+Multiple agents simulate structured collaboration.
+\begin{itemize}
+\item Writer produces content.
+\item Editor refines output.
+\item Reviewer evaluates correctness.
+\item Architect defines constraints.
+\item Implementer executes tasks.
+\item Roles operate independently.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Pair Programming Analogy}
+Agent systems resemble collaborative workflows.
+\begin{itemize}
+\item Human acts as supervisor.
+\item Model acts as executor.
+\item Feedback improves output.
+\item Errors are caught early.
+\item Iteration refines results.
+\item Supervision is required.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Reliability Through Separation}
+Separation enables system stability.
+\begin{itemize}
+\item Roles have limited scope.
+\item Outputs are constrained.
+\item Errors are isolated.
+\item Validation is independent.
+\item Feedback loops are controlled.
+\item Structure manages complexity.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Failure Modes in Agents}
+Agent systems introduce compound failures.
+\begin{itemize}
+\item Cascading hallucinations occur.
+\item Incorrect assumptions reinforce.
+\item Feedback loops go unchecked.
+\item Context grows excessively.
+\item Tests validate errors.
+\item Traceability is lost.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Feedback Loop Risk}
+Agents can amplify their own errors.
+\begin{itemize}
+\item Outputs become inputs.
+\item Errors embed in state.
+\item Corrections are not applied.
+\item Confidence increases falsely.
+\item Iteration misleads.
+\item Degradation appears as progress.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Context Explosion}
+Uncontrolled context destabilizes systems.
+\begin{itemize}
+\item Irrelevant information accumulates.
+\item Noise increases.
+\item Signal clarity decreases.
+\item Objectives drift.
+\item Hallucination risk rises.
+\item Reliability declines.
+\end{itemize}
+}
+
+\frame{
+\frametitle{The Missing Layer: Control}
+Agentic systems require explicit control.
+\begin{itemize}
+\item Constraints must be enforced.
+\item Validation must be external.
+\item State must be managed.
+\item Boundaries must be defined.
+\item Outputs must be verified.
+\item Autonomy must be limited.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Control as Design}
+Control is an architectural requirement.
+\begin{itemize}
+\item Interfaces must be defined.
+\item Data flow must be restricted.
+\item Determinism should be enforced.
+\item State transitions tracked.
+\item Validation checkpoints added.
+\item Auditability maintained.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Design Principles}
+Effective systems follow strict design rules.
+\begin{itemize}
+\item Constrain outputs at each stage.
+\item Isolate contexts.
+\item Require validation.
+\item Limit component scope.
+\item Avoid large tasks.
+\item Include human checkpoints.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Human-in-the-Loop}
+Human oversight ensures system reliability.
+\begin{itemize}
+\item Validate intermediate outputs.
+\item Correct errors early.
+\item Guide system direction.
+\item Enforce constraints.
+\item Provide domain knowledge.
+\item Prevent silent failures.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Structural Parallel}
+System architecture reflects these principles.
+\begin{itemize}
+\item Bounded contexts enforce separation.
+\item Event sourcing provides traceability.
+\item Deterministic interfaces improve reliability.
+\item Randomness is externalized.
+\item Orchestration is controlled.
+\item Components remain independent.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Key Insight}
+Agentic AI is about controlled execution.
+\begin{itemize}
+\item Behavior must be constrained.
+\item Workflows must be defined.
+\item Roles must be separated.
+\item Outputs must be validated.
+\item State must be managed.
+\item Control must be continuous.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Transition to Governance}
+Agent systems operate on data and actions.
+\begin{itemize}
+\item They process inputs and outputs.
+\item They interact with systems.
+\item They affect data flows.
+\item They introduce risk.
+\item They require accountability.
+\item They must be governed.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Bridge to Lecture 8}
+Agentic systems must align with enterprise constraints.
+\begin{itemize}
+\item They must follow data governance.
+\item They must integrate with systems.
+\item They must support auditability.
+\item They must manage data lifecycle.
+\item They must respect policy.
+\item They become infrastructure.
+\end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}

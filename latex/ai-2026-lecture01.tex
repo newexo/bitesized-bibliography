@@ -1,0 +1,208 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{Foundations of Large Language Models: What They Are and How They Behave}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 1}
+
+\frame
+{
+   \frametitle{A Familiar Shift in a New Domain}
+
+    We are experiencing a familiar technological shift in a new cognitive domain.
+
+    \begin{itemize}
+        \item Calculators reduced the need for manual arithmetic but not mathematical understanding.
+        \item Students now ask the same question in a new form: why learn this if AI can do it.
+        \item The domain of external assistance has shifted from computation to language and reasoning.
+        \item External tools can perform tasks without replacing the need for internal competence.
+        \item Real-world situations still require unassisted thinking, speaking, and judgment.
+        \item The analogy is useful only if we understand what LLMs actually are and are not.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{What LLMs Fundamentally Are}
+
+    Large language models are best understood as systems for sequence transformation.
+
+    \begin{itemize}
+        \item At a fundamental level, LLMs map sequences of tokens to new sequences.
+        \item They are trained on large corpora such as Common Crawl and other aggregated text sources.
+        \item Their objective is next-token prediction rather than truth or correctness.
+        \item Outputs are conditioned entirely on the provided context and prior generated tokens.
+        \item They do not contain structured knowledge in the manner of databases or symbolic systems.
+        \item Their behavior is better described as transformation than as understanding or reasoning.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{How Context Shapes Output}
+
+    The structure and content of the input largely determine the direction of the output.
+
+    \begin{itemize}
+        \item The model responds to patterns in the prompt rather than to an internal world model.
+        \item Small changes in phrasing or framing can substantially alter the generated response.
+        \item Structured input constrains the model toward more stable and predictable outputs.
+        \item Ungrounded prompts invite unconstrained sampling from the training distribution.
+        \item Context functions simultaneously as instruction and as constraint on generation.
+        \item Effective use requires deliberate construction of input rather than passive querying.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Why LLMs Perform Well}
+
+    LLMs are effective when tasks can be framed as transformations between representations.
+
+    \begin{itemize}
+        \item Strong performance appears when translating between formats such as text, schema, and code.
+        \item The models excel at recognizing and reproducing common structural patterns.
+        \item Tasks with clear mappings between representations are especially reliable.
+        \item Performance depends on statistical regularities learned from large training corpora.
+        \item Structured prompts reduce ambiguity and improve consistency of the output.
+        \item This explains why some tasks appear intelligent while others degrade very quickly.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Evidence from Structured Tasks}
+
+    Empirical evidence shows that reliability increases when work is staged through explicit structure.
+
+    \begin{itemize}
+        \item In structured cases such as status effects, schema to JSON to code transitions were accurate.
+        \item Consistent field definitions enabled alignment across multiple representations.
+        \item Unit tests generated from structured inputs were valid and executable.
+        \item Minimal correction was needed when scaffolding and constraints were present.
+        \item The model maintained coherence across several transformation steps.
+        \item Reliability therefore appears to be conditional on structure rather than inherent capability.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Failure Mode 1: Hallucination and Fabrication}
+
+    When grounding is weak, LLMs often produce plausible statements that are false.
+
+    \begin{itemize}
+        \item Models may invent facts, citations, or numerical values that appear credible.
+        \item In the EDA experiment, trends were inferred from minimal data and presented as factual.
+        \item Fabricated regression test outputs were produced without any actual computation.
+        \item Hallucinations are patterned and plausible rather than purely random.
+        \item Users often accept such outputs because fluency is mistaken for reliability.
+        \item This creates systematic risk in research, analysis, and decision-making work.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Failure Mode 2: Structural vs Semantic Errors}
+
+    LLMs often preserve formal structure while losing semantic correctness.
+
+    \begin{itemize}
+        \item Code may compile or appear correct while implementing the wrong logic.
+        \item In the dice example, probabilistic reasoning was replaced by a uniform distribution.
+        \item Structural patterns are easier for the model to reproduce than domain-specific meaning.
+        \item The model can preserve form without validating function.
+        \item Such errors often remain hidden unless explicit tests are applied.
+        \item Correct structure therefore does not imply correct semantics.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Failure Mode 3: Context Drift}
+
+    Long interactions often degrade because context accumulates noise and irrelevant patterning.
+
+    \begin{itemize}
+        \item Extended conversations accumulate unintended context that affects later outputs.
+        \item Models may introduce irrelevant artifacts such as code blocks in unrelated tasks.
+        \item Output style and format may drift unless actively corrected.
+        \item Earlier errors can propagate and distort future responses.
+        \item The model does not maintain clean topic separation unless the user enforces it.
+        \item Managing context is therefore an active responsibility rather than a passive assumption.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{The Core Limitation}
+
+    The central limitation of LLMs is that they generate by constrained pattern completion rather than truth-tracking.
+
+    \begin{itemize}
+        \item There is no internal mechanism that independently verifies correctness.
+        \item The model cannot on its own validate facts, proofs, or computations.
+        \item It lacks persistent state and stable internal representations across interactions.
+        \item It does not reliably track contradictions unless prompted and constrained to do so.
+        \item Reliability must therefore be imposed externally through structure and validation.
+        \item This limitation is fundamental to the system rather than a temporary defect.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Implications for Users}
+
+    Effective use of LLMs requires disciplined control over inputs, outputs, and validation.
+
+    \begin{itemize}
+        \item Begin with grounded inputs such as documents, data, or explicit references.
+        \item Treat outputs as drafts or hypotheses rather than as final answers.
+        \item Correct the model explicitly when it deviates from the task.
+        \item Avoid copying generated text without careful inspection and revision.
+        \item Use iteration, comparison, and cross-checking to improve reliability.
+        \item The model interprets silence as acceptance and reinforces that interaction pattern.
+    \end{itemize}
+}
+
+\frame
+{
+   \frametitle{Discussion}
+
+    Understanding LLM behavior leads directly to the problem of disciplined use.
+
+    \begin{itemize}
+        \item LLMs are powerful systems but they are inherently unreliable when unconstrained.
+        \item Their strongest performance depends on structure, staging, and explicit constraints.
+        \item Unstructured use leads predictably to degraded outputs and poor reasoning outcomes.
+        \item Effective use is therefore a matter of interaction design rather than mere access.
+        \item The real challenge is not possession of the tool but disciplined integration of it.
+        \item This leads to the next question: how can we use these systems without losing rigor.
+    \end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}

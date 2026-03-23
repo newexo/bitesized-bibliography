@@ -1,0 +1,422 @@
+\documentclass{beamer}
+
+\input{MathMacros}
+
+\usepackage{beamerthemesplit}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage[all,cmtip]{xy}
+\usepackage[mathscr]{eucal}
+\usepackage[natbib=true,style=authoryear,backend=bibtex,useprefix=true]{biblatex}
+\addbibresource{reading.bib}
+\usepackage{graphicx,color}
+
+\title{Data Governance as the Foundation of AI Systems}
+\author{Reuben Brasher}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+\section{Lecture 8}
+
+\frame{
+\frametitle{The Real Gap}
+The primary limitation in AI adoption is governance, not capability.
+\begin{itemize}
+\item AI capabilities are rapidly advancing.
+\item Tools for generation are widely available.
+\item Startups prioritize capability over integration.
+\item Enterprise adoption remains slow.
+\item Barriers are organizational.
+\item Governance is the missing layer.
+\end{itemize}
+}
+
+\frame{
+\frametitle{AI as Data Processing}
+AI systems should be understood as data processing utilities.
+\begin{itemize}
+\item Inputs are data.
+\item Outputs are transformed artifacts.
+\item Models operate on structured and unstructured data.
+\item Value depends on data quality.
+\item Integration determines usability.
+\item Processing implies governance obligations.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Core Principle}
+Systems that process data must comply with governance.
+\begin{itemize}
+\item AI systems ingest organizational data.
+\item They generate derived data.
+\item They redistribute information.
+\item They interact with sensitive datasets.
+\item They influence decisions.
+\item They fall under governance frameworks.
+\end{itemize}
+}
+
+\frame{
+\frametitle{What Is Data Governance}
+Data governance defines how data is managed.
+\begin{itemize}
+\item Establishes policies.
+\item Defines accountability.
+\item Assigns decision rights.
+\item Ensures compliance.
+\item Maintains quality.
+\item Aligns with strategy.
+\end{itemize}
+}
+
+\frame{
+\frametitle{What Is Data Management}
+Data management implements governance.
+\begin{itemize}
+\item Handles data collection.
+\item Manages storage systems.
+\item Maintains integrity.
+\item Supports access workflows.
+\item Enforces security controls.
+\item Executes lifecycle operations.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Governance vs Management}
+Governance defines rules while management executes them.
+\begin{itemize}
+\item Governance sets expectations.
+\item Management applies rules.
+\item Governance is strategic.
+\item Management is operational.
+\item Alignment is required.
+\item Separation clarifies roles.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Enterprise Constraints}
+Organizations prioritize stability over innovation.
+\begin{itemize}
+\item Data security is critical.
+\item Legal compliance is required.
+\item Integration is necessary.
+\item Auditability is expected.
+\item Reliability is essential.
+\item Control is mandatory.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Enterprise Pain Points}
+Adoption is limited by organizational complexity.
+\begin{itemize}
+\item Risk of data exposure exists.
+\item Departments may conflict.
+\item Legacy systems complicate integration.
+\item Ownership is unclear.
+\item Policy enforcement is difficult.
+\item Resistance is common.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Key Insight}
+Governance determines adoption rather than technical quality.
+\begin{itemize}
+\item Better models do not ensure use.
+\item Security overrides innovation.
+\item Compliance blocks deployment.
+\item Integration determines value.
+\item Trust drives acceptance.
+\item Governance determines viability.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Why Agentic AI Fails}
+Agentic systems often ignore governance requirements.
+\begin{itemize}
+\item They assume open data access.
+\item They lack control mechanisms.
+\item They omit audit trails.
+\item They cannot ensure compliance.
+\item They operate opaquely.
+\item They ignore constraints.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Common Failures}
+Typical issues reflect governance gaps.
+\begin{itemize}
+\item Sensitive data enters prompts.
+\item Outputs lack traceability.
+\item Decisions lack accountability.
+\item Logs are incomplete.
+\item Results are not reproducible.
+\item Oversight is missing.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Opaque Decisions}
+Lack of transparency undermines trust.
+\begin{itemize}
+\item Reasoning is hidden.
+\item Outputs are unexplained.
+\item Steps are not recorded.
+\item Auditing is difficult.
+\item Errors are untraceable.
+\item Trust declines.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Data Lifecycle Overview}
+Governance spans the entire data lifecycle.
+\begin{itemize}
+\item Plan data usage.
+\item Create or obtain data.
+\item Store and maintain data.
+\item Use data operationally.
+\item Enhance through analysis.
+\item Dispose when unnecessary.
+\end{itemize}
+}
+
+\frame{
+\frametitle{AI and Lifecycle}
+AI participates in every stage of the lifecycle.
+\begin{itemize}
+\item Prompts are inputs.
+\item Artifacts store transformations.
+\item Outputs become assets.
+\item Logs capture activity.
+\item Training data influences behavior.
+\item Governance applies everywhere.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Plan Stage}
+Planning defines system boundaries.
+\begin{itemize}
+\item Identify data sources.
+\item Define use cases.
+\item Assign ownership.
+\item Establish compliance.
+\item Set boundaries.
+\item Align with goals.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Create or Obtain}
+Data enters through multiple channels.
+\begin{itemize}
+\item User prompts provide data.
+\item APIs add inputs.
+\item Artifacts accumulate.
+\item Validation ensures consistency.
+\item Metadata is captured.
+\item Provenance is tracked.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Store and Maintain}
+Data must be securely managed.
+\begin{itemize}
+\item Outputs require storage.
+\item Access must be controlled.
+\item Encryption protects data.
+\item Retention policies apply.
+\item Integrity is maintained.
+\item Documentation is required.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Use Stage}
+Data is used to generate value.
+\begin{itemize}
+\item Systems transform inputs.
+\item Decisions are made.
+\item Access must be restricted.
+\item Usage must be authorized.
+\item Outputs must be validated.
+\item Compliance is enforced.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Enhance Stage}
+Data is refined and improved.
+\begin{itemize}
+\item Outputs are corrected.
+\item Patterns are identified.
+\item Errors are addressed.
+\item Feedback improves systems.
+\item Quality is monitored.
+\item Governance ensures alignment.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Dispose Stage}
+Data must be removed appropriately.
+\begin{itemize}
+\item Retention schedules apply.
+\item Legal rules may override deletion.
+\item User requests trigger removal.
+\item Secure deletion is required.
+\item Disposal is tracked.
+\item Compliance is ensured.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Governance Requirements}
+AI systems must meet governance constraints.
+\begin{itemize}
+\item Enforce access control.
+\item Maintain logs.
+\item Enable traceability.
+\item Validate behavior.
+\item Apply retention rules.
+\item Support audits.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Security Connection}
+Governance directly supports security.
+\begin{itemize}
+\item Prevents data leakage.
+\item Limits exposure.
+\item Reduces attack risk.
+\item Ensures accountability.
+\item Supports incident response.
+\item Aligns with regulation.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Strategic Opportunity}
+Governance creates competitive advantage.
+\begin{itemize}
+\item Many ignore governance.
+\item Solutions fail enterprise needs.
+\item Safe AI is required.
+\item Compliance-ready systems are rare.
+\item Integration-focused tools are valuable.
+\item Governance differentiates.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Market Positioning}
+Successful systems align with enterprise requirements.
+\begin{itemize}
+\item Emphasize compliance.
+\item Integrate with infrastructure.
+\item Provide transparency.
+\item Control data flows.
+\item Align with governance.
+\item Deliver trusted outputs.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Organizational Alignment}
+AI requires cross-functional coordination.
+\begin{itemize}
+\item Security ensures protection.
+\item Legal ensures compliance.
+\item Governance defines policy.
+\item Product defines use cases.
+\item Engineering builds systems.
+\item Coordination is required.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Organizational Failure}
+Late governance involvement causes failure.
+\begin{itemize}
+\item Security is consulted too late.
+\item Compliance issues emerge late.
+\item Systems are rejected.
+\item Rework is required.
+\item Projects stall.
+\item Early alignment is critical.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Core Synthesis}
+AI systems must be governed from the start.
+\begin{itemize}
+\item Governance is not optional.
+\item It must be architectural.
+\item Design reflects constraints.
+\item Data flows are controlled.
+\item Outputs are accountable.
+\item Systems are auditable.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Series Integration}
+Governance integrates all prior phases.
+\begin{itemize}
+\item Model behavior is understood.
+\item Systems are structured.
+\item Failures are identified.
+\item Risks are analyzed.
+\item Governance unifies phases.
+\item Systems thinking dominates.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Final Insight}
+AI success depends on systems, not models.
+\begin{itemize}
+\item Models are one component.
+\item Systems define behavior.
+\item Data defines value.
+\item Governance defines viability.
+\item Organizations drive adoption.
+\item Integration ensures success.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Closing Statement}
+AI is fundamentally a governance and systems problem.
+\begin{itemize}
+\item Technology alone is insufficient.
+\item Structure determines reliability.
+\item Governance ensures safety.
+\item Alignment enables adoption.
+\item Strategy drives impact.
+\item Governed systems define the future.
+\end{itemize}
+}
+
+\begin{frame}[t,allowframebreaks]
+\frametitle{References}
+\printbibliography
+\end{frame}
+
+\end{document}
