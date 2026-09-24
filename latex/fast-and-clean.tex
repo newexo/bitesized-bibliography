@@ -5,7 +5,7 @@
 %
 % Set \modulestrue below to append the optional modules (the 90-minute build).
 
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=169,t]{beamer}
 
 \usetheme{default}
 \setbeamertemplate{navigation symbols}{}
@@ -93,17 +93,13 @@
 
 \begin{frame}{Code used to be the asset. Now context is.}
     \begin{itemize}
-        \item Code was expensive and hard to replace, so it was what you
-              protected. Documentation \emph{described} it, went stale, and
-              everyone knew it.
-        \item \textbf{That has inverted.} Specification, domain vocabulary and
-              decision records now \emph{determine} the code. The dependency runs
-              the other way.
-        \item With curated context, an agent rewrites a well-bounded codebase in
-              hours. Code becomes a build artifact.
-        \item This is why developers started thinking like architects.
-        \item \textbf{The honest limit:} code still holds behaviour nobody wrote
-              down. Tests are how you move that into the context.
+        \item Code was expensive and hard to replace. Documentation
+              \emph{described} it, and went stale.
+        \item \textbf{That has inverted.} Specification, vocabulary and decision
+              records now \emph{determine} the code.
+        \item Curated context, and an agent rewrites a codebase in hours.
+              Code becomes a build artifact.
+        \item Which is why developers started thinking like architects.
     \end{itemize}
 \end{frame}
 
@@ -111,14 +107,11 @@
     research $\rightarrow$ planning $\rightarrow$ data $\rightarrow$ code
     $\rightarrow$ hand-over
     \begin{itemize}
-        \item Separate agent per stage. Three reasons: the client's material does
-              not cross; the last stage's \emph{framing} does not cross; context
-              narrows instead of accumulating.
-        \item Roles follow for free --- \textbf{rung} (cheapest competent actor)
-              and \textbf{processor} (what may see this).
-        \item \textbf{Cost, honestly:} every boundary needs an artifact. Worth it
-              because that artifact is the handoff \emph{and} the audit record.
-        \item Now watch it happen to one client.
+        \item Separate agent per stage. Their material does not cross. The last
+              stage's \emph{framing} does not cross. Context narrows.
+        \item Roles follow for free: \textbf{rung} and \textbf{processor}.
+        \item \textbf{Every boundary needs an artifact} --- which is also the
+              audit record.
     \end{itemize}
 \end{frame}
 
@@ -136,19 +129,18 @@
 \end{frame}
 
 \begin{frame}{The prompt I actually send}
-    \begin{quote}\small
-        I am scoping a recommender for a clothing retailer with strongly seasonal
-        demand. I already know this ground: Hu/Koren/Volinsky on implicit
-        feedback, Koren's temporal dynamics, Kang and McAuley's SASRec, Yi et al.\
-        on two-tower retrieval. What I want is where \textbf{calendar seasonality}
-        --- annual periodicity shared across users, not per-user drift --- is a
-        first-class signal rather than ordering or decay. Break the reading into
-        these five areas. \textbf{Start each with survey papers from reputable
-        venues}, then fan out. \textbf{Flag anything you are not confident exists.}
+    \begin{quote}
+        A recommender for a clothing retailer, strongly seasonal demand.
+
+        \emph{I already know:} Hu/Koren/Volinsky, Koren, SASRec, two-tower.
+
+        \emph{I want:} where calendar seasonality is first-class, not ordering or decay.
+
+        \emph{Surveys first}, reputable venues, then fan out. Five areas, named.
+
+        \emph{Flag anything you are not confident exists.}
     \end{quote}
     \begin{itemize}
-        \item Anchors on papers I know; surveys first; names the areas; asks for a
-              confidence flag.
         \item The seeds and the areas are my judgement. That is not delegated.
     \end{itemize}
 \end{frame}
@@ -157,15 +149,13 @@
     Clothing is seasonal. The research models time as \emph{order} or
     \emph{drift}. Neither says ``week 47 looks like this for everybody.''
     \begin{itemize}
-        \item Tested, not asserted: \textbf{957 references checked}. The two
-              literatures cite each other essentially zero times.
-        \item \textbf{The perfect counterexample was withdrawn.} Author's note:
-              ``issue with AB testing results.'' Unchecked, my strongest claim
-              rests on a retracted paper.
-        \item That afternoon I also scan their competitors. The reading list is
-              \textbf{study} and outlives this client. The scan is \textbf{theirs},
-              with nothing signed.
-        \item \emph{Same tool, same day, two owners.}
+        \item \textbf{957 references checked.} The two literatures cite each other
+              essentially zero times.
+        \item \textbf{The perfect counterexample was withdrawn.} Unchecked, my
+              strongest claim rests on a retracted paper.
+        \item Same afternoon I scan their competitors. Reading list is
+              \textbf{study}. The scan is \textbf{theirs}.
+              \emph{Same tool, same day, two owners.}
     \end{itemize}
 \end{frame}
 
@@ -232,13 +222,9 @@
     \emph{Illustrative, not verbatim --- in practice several paragraphs carrying
     enough of the domain to be useful.}
     \begin{itemize}
-        \item Report missingness, skew, duplicate keys, date coverage, anything
-              resembling a leak. Propose cleaning as a \textbf{list I approve}.
-        \item What comes back: about 1\% of products never sold, 0.7\% of
-              customers never bought, three quarters of the catalogue in the long tail.
+        \item Report what is wrong. Propose cleaning as a \textbf{list I approve}.
         \item The finding that matters is about \textbf{evaluation, not cleaning}:
-              with seasonal data a random split leaks the future, and most
-              published results do exactly that.
+              with seasonal data a random split leaks the future.
         \item \textbf{The danger here is tidiness.} A model that cleans unasked
               hands you a clean dataset and a wrong answer.
     \end{itemize}
@@ -298,16 +284,12 @@
 \begin{frame}{The deliverable is no longer where the value is}
     Your client contracts for a deliverable. They still do, and they are right to.
     \begin{itemize}
-        \item But it is no longer the only artifact carrying value. The brief, the
-              vocabulary, the decision records, the specification:
+        \item The brief, the vocabulary, the decision records:
               \textbf{that is what would let anyone rebuild it.}
         \item The contract addresses the deliverable. It says nothing about the
-              thing that now matters.
-        \item The job of the coder changed. The job of the consultant changed.
-              \textbf{The industry has not caught up.}
-        \item \emph{And yes, this contradicts what I said two slides ago.} The line
-              now runs through files that did not exist five years ago, and nobody
-              has drawn it.
+              thing that now matters. \textbf{The industry has not caught up.}
+        \item \emph{And yes, this contradicts what I said two slides ago.}
+              Nobody has drawn that line.
     \end{itemize}
 \end{frame}
 
@@ -341,13 +323,11 @@
 
 \begin{frame}{The ask is commercial, not legal}
     \begin{itemize}
-        \item Not a lawsuit. A client saying ``send us everything you used,'' or a
-              vendor questionnaire.
-        \item I am not going to tell you what the law says here, and I do not think
-              anyone can yet. \textbf{The rule has not been written.} What I can
-              tell you is what a client will conclude.
-        \item What it shows: two clients' material in one conversation.
-        \item What it costs: not liability --- the deal, and the referral behind it.
+        \item Not a lawsuit. ``Send us everything you used,'' or a vendor
+              questionnaire.
+        \item \textbf{The rule has not been written.} I will not tell you what the
+              law says. I will tell you what a client concludes.
+        \item Not liability --- the deal, and the referral behind it.
         \item \textbf{Would you be comfortable if Duds read your session history?}
     \end{itemize}
 \end{frame}
