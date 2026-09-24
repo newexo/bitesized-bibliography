@@ -10,6 +10,7 @@
 \usetheme{default}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{headline}{%
+  \vspace*{1.5ex}%
   \begin{beamercolorbox}[wd=\paperwidth,ht=3.5ex,dp=2ex,leftskip=2.2ex]{}%
     {\usebeamercolor[fg]{structure}\footnotesize\insertsection}%
   \end{beamercolorbox}%
@@ -136,24 +137,28 @@
 \end{frame}
 
 \begin{frame}{The prompt I actually send}
-    \begin{quote}
-        A recommender for a clothing retailer, strongly seasonal demand.
-        \medskip
-
-        \emph{I already know:} Hu/Koren/Volinsky, Koren, SASRec, two-tower.
-        \medskip
-
-        \emph{I want:} where calendar seasonality is first-class, not ordering or decay.
-        \medskip
-
-        \emph{Surveys first}, reputable venues, then fan out. Five areas, named.
-        \medskip
-
-        \emph{Flag anything you are not confident exists.}
-    \end{quote}
-    \begin{itemize}
-        \item The seeds and the areas are my judgement. That is not delegated.
-    \end{itemize}
+    \vspace{0.5ex}
+    \hrule
+    \vspace{2ex}
+    {\small
+    I am scoping a recommender system for a clothing retailer with strongly
+    seasonal demand. I already know the standard ground here: Hu, Koren and
+    Volinsky on implicit feedback; Koren on temporal dynamics; Kang and
+    McAuley's SASRec; and Yi and colleagues on two-tower retrieval.
+    \par\medskip
+    What I want to find is where calendar seasonality --- annual periodicity
+    shared across all users at once, rather than drift in one person's taste ---
+    is treated as a first-class signal, instead of being reduced to sequence
+    ordering or to time decay.
+    \par\medskip
+    Please break the reading into five areas, and start each one with survey or
+    review papers from reputable journals or top conferences before fanning out
+    to the most-cited primary papers. For each paper, give me the venue, the
+    year, and one sentence on what it contributes that the others do not. Flag
+    anything you are not confident actually exists.
+    \par}
+    \vspace{2ex}
+    \hrule
 \end{frame}
 
 \begin{frame}{What it found, and what it nearly cost me}
@@ -176,7 +181,7 @@
 \begin{frame}{Thursday, week three. Two hours in a room.}
     Their sponsor, a brand manager, you, and one colleague. You are running an
     \textbf{event storm}: getting the domain out of their heads and into events,
-    before anyone designs anything.
+    before anyone designs.
     \begin{itemize}
         \item No vocabulary agreed. No scope. No model of anything.
         \item This is where most projects are decided, and almost nothing is
