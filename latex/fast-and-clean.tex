@@ -10,7 +10,9 @@
 \usetheme{default}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{headline}{%
-  \vspace*{1.2ex}\hfill{\scriptsize\color{gray}\insertsection}\hspace*{2.5em}%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3.5ex,dp=2ex,right]{}%
+    {\usebeamercolor[fg]{structure}\footnotesize\insertsection}\hspace*{1.2em}%
+  \end{beamercolorbox}%
 }
 \setbeamertemplate{itemize items}[circle]
 \setbeamerfont{frametitle}{size=\large}
