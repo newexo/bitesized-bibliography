@@ -9,6 +9,9 @@
 
 \usetheme{default}
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{%
+  \vspace*{1.2ex}\hfill{\scriptsize\color{gray}\insertsection}\hspace*{2.5em}%
+}
 \setbeamertemplate{itemize items}[circle]
 \setbeamerfont{frametitle}{size=\large}
 
@@ -40,7 +43,7 @@
 \end{frame}
 
 %% ===================================================================
-\section{What this technology is}
+\section{The technology}
 
 \begin{frame}{I do not mean a chat box}
     Not a website you paste a question into.
@@ -92,6 +95,7 @@
 \end{frame}
 
 \begin{frame}{Code used to be the asset. Now context is.}
+    The inversion that makes all of this possible.
     \begin{itemize}
         \item Code was expensive and hard to replace. Documentation
               \emph{described} it, and went stale.
@@ -118,8 +122,9 @@
 %% ===================================================================
 \section{Stage 1: research}
 
-\begin{frame}{Tuesday, week one. An email from Duds.}
-    A clothing retailer. They want better recommendations than they have.
+\begin{frame}{Tuesday, week one. An email from Duddly's Duds.}
+    A mid-market clothing chain with an unfortunate name and a real problem. They
+    want better recommendations than they have. \textbf{Duds} from here on.
     \begin{itemize}
         \item You know recommender systems. You do not know fashion retail.
         \item Nothing is signed. Nobody has paid you.
@@ -131,12 +136,16 @@
 \begin{frame}{The prompt I actually send}
     \begin{quote}
         A recommender for a clothing retailer, strongly seasonal demand.
+        \medskip
 
         \emph{I already know:} Hu/Koren/Volinsky, Koren, SASRec, two-tower.
+        \medskip
 
         \emph{I want:} where calendar seasonality is first-class, not ordering or decay.
+        \medskip
 
         \emph{Surveys first}, reputable venues, then fan out. Five areas, named.
+        \medskip
 
         \emph{Flag anything you are not confident exists.}
     \end{quote}
@@ -163,7 +172,9 @@
 \section{Stage 2: planning}
 
 \begin{frame}{Thursday, week three. Two hours in a room.}
-    Their sponsor, a brand manager, you, and one colleague.
+    Their sponsor, a brand manager, you, and one colleague. You are running an
+    \textbf{event storm}: getting the domain out of their heads and into events,
+    before anyone designs anything.
     \begin{itemize}
         \item No vocabulary agreed. No scope. No model of anything.
         \item This is where most projects are decided, and almost nothing is
@@ -310,7 +321,7 @@
 \end{frame}
 
 %% ===================================================================
-\section{The record you did not know you were keeping}
+\section{The record}
 
 \begin{frame}{Five stages, five sessions, five documents}
     \begin{itemize}
