@@ -1,0 +1,489 @@
+% Fast and Clean --- Silicon Valley Masterclass 2026, Santa Clara University.
+%
+% Build: pdflatex fast-and-clean.tex (twice, for the table of contents).
+% No external dependencies: no MathMacros, no bibliography, no images.
+%
+% Set \modulestrue below to append the optional modules (the 90-minute build).
+
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamerfont{frametitle}{size=\large}
+
+\newif\ifmodules
+\modulesfalse
+
+\title{Fast and Clean}
+\subtitle{AI-Assisted Research and Prototyping for New Clients}
+\author{Reuben Brasher}
+\institute{Head of Customer Delivery Engineering, Terra Quantum AG}
+\date{24 September 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%% ===================================================================
+\section{The cold start}
+
+\begin{frame}{The cold start}
+    An opportunity in a domain you do not know, from people with no reason to
+    trust you.
+    \begin{itemize}
+        \item The old arithmetic: weeks of unpaid work before anyone believes you.
+        \item So you bluff, or you decline, or you over-invest in a stranger.
+        \item \textbf{That arithmetic changed} --- not because the model does the
+              work, but because you can organise the work differently.
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{What this technology is}
+
+\begin{frame}{I do not mean a chat box}
+    Not a website you paste a question into.
+    \begin{itemize}
+        \item An agent that runs \textbf{on your own machine}: reads your files,
+              writes files, runs commands, reads what those commands printed.
+        \item It can act, look at the result, and act again --- with nobody in
+              the loop between steps.
+        \item Claude Code, Codex, and others. As a category, about two years old.
+        \item If you have only used a chat interface, \textbf{this is a different
+              thing}, and most of what you have read about prompting does not apply.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Why it changed how I think about work}
+    The whole filesystem is available context.
+    \begin{itemize}
+        \item Your repositories, your notes, last week's downloads, a meeting
+              transcript you forgot about.
+        \item \textbf{It does not need to be told what is relevant.} Work that
+              took days takes an afternoon. Understating that would be dishonest.
+        \item It is also, word for word, the exposure.
+        \item \emph{Seeing everything you have} is one fact with two consequences.
+              Everything else in this talk follows from that sentence.
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{The thesis}
+
+\begin{frame}{Reasoning improved. The core business is still transformation.}
+    Models reason better every year. That raises the ceiling on each step.
+    \begin{itemize}
+        \item It does not change what the machine is: a thing that turns one
+              representation into another.
+        \item My own slide, written months ago: ``best understood as
+              transformation, not reasoning or understanding.''
+        \item Better reasoning makes each transformation bigger.
+              \textbf{It does not remove the chain.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{So the job moved}
+    \begin{itemize}
+        \item Not the reasoner. Not the typist.
+        \item \textbf{The person who decides where the cuts go.}
+        \item Three years ago the skill was prompting. Now it is decomposition.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Code used to be the asset. Now context is.}
+    \begin{itemize}
+        \item Code was expensive and hard to replace, so it was what you
+              protected. Documentation \emph{described} it, went stale, and
+              everyone knew it.
+        \item \textbf{That has inverted.} Specification, domain vocabulary and
+              decision records now \emph{determine} the code. The dependency runs
+              the other way.
+        \item With curated context, an agent rewrites a well-bounded codebase in
+              hours. Code becomes a build artifact.
+        \item This is why developers started thinking like architects.
+        \item \textbf{The honest limit:} code still holds behaviour nobody wrote
+              down. Tests are how you move that into the context.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{One engagement, five transformations}
+    research $\rightarrow$ planning $\rightarrow$ data $\rightarrow$ code
+    $\rightarrow$ hand-over
+    \begin{itemize}
+        \item Separate agent per stage. Three reasons: the client's material does
+              not cross; the last stage's \emph{framing} does not cross; context
+              narrows instead of accumulating.
+        \item Roles follow for free --- \textbf{rung} (cheapest competent actor)
+              and \textbf{processor} (what may see this).
+        \item \textbf{Cost, honestly:} every boundary needs an artifact. Worth it
+              because that artifact is the handoff \emph{and} the audit record.
+        \item Now watch it happen to one client.
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{Stage 1: research}
+
+\begin{frame}{Tuesday, week one. An email from Duds.}
+    A clothing retailer. They want better recommendations than they have.
+    \begin{itemize}
+        \item You know recommender systems. You do not know fashion retail.
+        \item Nothing is signed. Nobody has paid you.
+        \item \textbf{The engagement has already begun.} From this email, anything
+              their competitor should not see is already theirs.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The prompt I actually send}
+    \begin{quote}\small
+        I am scoping a recommender for a clothing retailer with strongly seasonal
+        demand. I already know this ground: Hu/Koren/Volinsky on implicit
+        feedback, Koren's temporal dynamics, Kang and McAuley's SASRec, Yi et al.\
+        on two-tower retrieval. What I want is where \textbf{calendar seasonality}
+        --- annual periodicity shared across users, not per-user drift --- is a
+        first-class signal rather than ordering or decay. Break the reading into
+        these five areas. \textbf{Start each with survey papers from reputable
+        venues}, then fan out. \textbf{Flag anything you are not confident exists.}
+    \end{quote}
+    \begin{itemize}
+        \item Anchors on papers I know; surveys first; names the areas; asks for a
+              confidence flag.
+        \item The seeds and the areas are my judgement. That is not delegated.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{What it found, and what it nearly cost me}
+    Clothing is seasonal. The research models time as \emph{order} or
+    \emph{drift}. Neither says ``week 47 looks like this for everybody.''
+    \begin{itemize}
+        \item Tested, not asserted: \textbf{957 references checked}. The two
+              literatures cite each other essentially zero times.
+        \item \textbf{The perfect counterexample was withdrawn.} Author's note:
+              ``issue with AB testing results.'' Unchecked, my strongest claim
+              rests on a retracted paper.
+        \item That afternoon I also scan their competitors. The reading list is
+              \textbf{study} and outlives this client. The scan is \textbf{theirs},
+              with nothing signed.
+        \item \emph{Same tool, same day, two owners.}
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{Stage 2: planning}
+
+\begin{frame}{Thursday, week three. Two hours in a room.}
+    Their sponsor, a brand manager, you, and one colleague.
+    \begin{itemize}
+        \item No vocabulary agreed. No scope. No model of anything.
+        \item This is where most projects are decided, and almost nothing is
+              written down.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Do not ask it to design. Ask it to interview.}
+    \begin{quote}\small
+        We are conducting an event storm on the topic of time-aware recommender
+        systems in clothing retail.
+    \end{quote}
+    \begin{itemize}
+        \item That is the entire prompt. A skill takes over and the agent becomes
+              the facilitator: past-tense business events, no implementation, park
+              what is uncertain.
+        \item The tooling \textbf{refuses to invent}: a command with no trigger
+              event is blocked.
+        \item \textbf{The prompt got shorter because the method got packaged.}
+              The work moved into a reusable definition.
+        \item \textbf{The danger here is not error. It is fluency.} Asked to
+              design, a model produces a coherent domain that is not yours.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The record keeps the disagreement}
+    Every line is marked:
+    \begin{quote}\small
+        \textbf{[owner]} is the owner's statement. Anything marked
+        \textbf{[moderator]} is a question or an observation for the owner to
+        confirm, \textbf{and is not a fact.}
+    \end{quote}
+    \begin{quote}\small
+        \textbf{[owner]} One raw store per engagement [\ldots] there is no global
+        raw store. \emph{(The moderator first recorded this as a single global raw
+        store; the owner corrected it.)}
+    \end{quote}
+    \begin{itemize}
+        \item The assistant got the domain wrong and the correction survives.
+        \item \textbf{That is the artifact --- not the agreement, the disagreement.}
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{Stage 3: data}
+
+\begin{frame}{Monday, week four. The extract arrives.}
+    \begin{itemize}
+        \item 31 million transactions. 1.4 million customers. 100{,}000 products.
+              Two years.
+        \item No documentation. Nobody at Duds can tell you how it was assembled.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{``Profile it. Do not clean it.''}
+    \emph{Illustrative, not verbatim --- in practice several paragraphs carrying
+    enough of the domain to be useful.}
+    \begin{itemize}
+        \item Report missingness, skew, duplicate keys, date coverage, anything
+              resembling a leak. Propose cleaning as a \textbf{list I approve}.
+        \item What comes back: about 1\% of products never sold, 0.7\% of
+              customers never bought, three quarters of the catalogue in the long tail.
+        \item The finding that matters is about \textbf{evaluation, not cleaning}:
+              with seasonal data a random split leaks the future, and most
+              published results do exactly that.
+        \item \textbf{The danger here is tidiness.} A model that cleans unasked
+              hands you a clean dataset and a wrong answer.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Their data, and the thing that moved}
+    \begin{itemize}
+        \item Which model may see this is \textbf{decided per store and fails
+              closed} --- sensitive rows go to a local model, never into a session
+              transcript, never to a hosted service.
+        \item And data moves. Re-running a three-year-old experiment gave a result
+              \textbf{10.6\% different} --- not a better model, a regenerated
+              sample nobody recorded.
+        \item \textbf{Identity is a digest, not a filename.}
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{Stage 4: code}
+
+\begin{frame}{Week six. Build something they can look at.}
+    \begin{itemize}
+        \item This is the stage everyone thinks the talk is about.
+        \item If the first three stages went well, it is the shortest part of the work.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tests first, because wrong code does not crash}
+    In data science a mistake returns \textbf{a number}, not an error.
+    \begin{itemize}
+        \item \emph{Illustrative, not verbatim.} Characterization tests against
+              current behaviour, then one change, its failing test, the command,
+              the expected output.
+        \item I write or approve the tests. The assistant does not grade its own work.
+        \item \textbf{When the upstream stages went well this stage is boring, and
+              boring is the whole objective.}
+        \item Code declares where it came from exactly as documentation does.
+              Both are deliverables.
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{Stage 5: hand-over}
+
+\begin{frame}{Week ten. It works. Now you leave.}
+    \begin{itemize}
+        \item The awkward part --- and the part AI assistance makes materially
+              worse if you are careless.
+        \item \emph{Illustrative, not verbatim.} Write the decision record now:
+              the reasoning available at the time, including the assumption nobody
+              tested and the thing you chose \emph{not} to do.
+        \item \textbf{Do not revise an executed decision to match what was built.}
+              That fabricates foresight. Supersede it instead.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The deliverable is no longer where the value is}
+    Your client contracts for a deliverable. They still do, and they are right to.
+    \begin{itemize}
+        \item But it is no longer the only artifact carrying value. The brief, the
+              vocabulary, the decision records, the specification:
+              \textbf{that is what would let anyone rebuild it.}
+        \item The contract addresses the deliverable. It says nothing about the
+              thing that now matters.
+        \item The job of the coder changed. The job of the consultant changed.
+              \textbf{The industry has not caught up.}
+        \item \emph{And yes, this contradicts what I said two slides ago.} The line
+              now runs through files that did not exist five years ago, and nobody
+              has drawn it.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Whose directory is this?}
+    A careless practitioner runs three engagements from one machine, one set of
+    notes, one assistant.
+    \begin{itemize}
+        \item A brief conditioned on client A. A glossary derived from client B's
+              vocabulary. A specification informed by both. Transcripts that
+              touched all three.
+        \item \textbf{Several clients could each make a legitimate claim on parts
+              of that directory, and nobody could untangle which.}
+        \item Not because anyone did anything wrong. Because the value moved
+              somewhere the contracts do not describe.
+        \item \textbf{This is what provenance is for.} Not to settle the question.
+              To make sure you can still answer it when it is asked.
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{The record you did not know you were keeping}
+
+\begin{frame}{Five stages, five sessions, five documents}
+    \begin{itemize}
+        \item Every other AI-risk talk warns that the model will leak your data.
+        \item The likelier problem: you are \textbf{authoring} a record.
+        \item Timestamped, ordered, and more revealing than any deliverable ---
+              because it shows how you thought, and beside what.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The ask is commercial, not legal}
+    \begin{itemize}
+        \item Not a lawsuit. A client saying ``send us everything you used,'' or a
+              vendor questionnaire.
+        \item I am not going to tell you what the law says here, and I do not think
+              anyone can yet. \textbf{The rule has not been written.} What I can
+              tell you is what a client will conclude.
+        \item What it shows: two clients' material in one conversation.
+        \item What it costs: not liability --- the deal, and the referral behind it.
+        \item \textbf{Would you be comfortable if Duds read your session history?}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{One client per session, by construction}
+    Not by remembering. The actual file my assistant reads before it does anything:
+    \begin{quote}\small
+        \textbf{One project per session.} Directories are separate projects
+        [\ldots]. Stay in the one you were asked about.
+
+        Do not open \texttt{student-context}, any engagement material, or
+        \texttt{llm-prompts}.
+    \end{quote}
+    \begin{itemize}
+        \item A rule that constrains the assistant, not the human.
+        \item I have not opened those directories today, and the reason is four
+              lines of a text file rather than my memory.
+        \item Provenance does not hide the transcript. It makes it boring.
+    \end{itemize}
+\end{frame}
+
+%% ===================================================================
+\section{Close}
+
+\begin{frame}{Every failure in this talk produced something plausible}
+    \begin{itemize}
+        \item A believable empty search result. A tidy dataset. A metric. A branch
+              name. A session history that looks like ordinary work.
+        \item Yesterday I ran a documented command against a half-finished
+              refactor. It did not fail. It wrote a confident wrong answer:
+              565 missing where there were none.
+        \item \textbf{Nothing announces itself. That is what the chain is for.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Fast and clean are one discipline}
+    \begin{itemize}
+        \item Two months old, in use, increasingly tested, \textbf{not finished}
+              --- and a framework that looks finished and is not is worse than one
+              that shows its gaps.
+        \item If context is the asset, \textbf{contaminated context is not a
+              compliance problem. It is the destruction of the only durable thing
+              you own.}
+        \item Tomorrow you pitch. What earns the work is not the demo. It is being
+              someone who can be let near their data.
+    \end{itemize}
+\end{frame}
+
+\ifmodules
+%% ===================================================================
+\appendix
+
+\section{Module: where this came from}
+
+\begin{frame}{An assumption nobody had tested}
+    A three-year-old belief that a pipeline ``required a three-table join that
+    never worked well.''
+    \begin{itemize}
+        \item It was not a join. It was a dictionary lookup inside a per-customer loop.
+        \item Neither author would vouch for the details. The only quantitative
+              record was results committed into config files.
+        \item Recorded as recollection, explicitly, not as evidence.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{An artifact that impersonated a decision}
+    \begin{itemize}
+        \item A branch named for an architectural alternative, with the dependency
+              to match.
+        \item ``Never rejected on evidence, because it was never proposed on evidence.''
+        \item A name, a dependency and a framing implied a decision that never happened.
+        \item Re-running a three-year-old experiment: 10.6\% different. A
+              regenerated sample, not a better model.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The record and the reality drifted, and nobody could tell}
+    \begin{itemize}
+        \item Third-party images reached public history as base64 inside notebook
+              outputs. The ignore rule for the image directory had been correct
+              throughout.
+        \item \textbf{The leak did not pass through a tracked directory.}
+        \item The framework is not architecture. It is scar tissue.
+    \end{itemize}
+\end{frame}
+
+\section{Module: what counting found}
+
+\begin{frame}{Nobody had ever counted}
+    Rules stated in four places that disagree. A policy still in draft.
+    \begin{itemize}
+        \item Five stores, eight categories, repairs: none.
+        \item ``A count that changes what it counts is not a measurement.''
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{554 declarations, zero disagreements}
+    \begin{itemize}
+        \item Where a document declares a value, the catalogue agrees. Every
+              mismatch found was staleness, not divergence of meaning.
+        \item \textbf{But 199 lost attributions.} A directory declares a named
+              collaborator and joint work; a document in that tree writes its own
+              block and inherits none of it.
+        \item An attribution obligation destroyed by being \emph{more specific}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Lineage as written is unusable}
+    \begin{itemize}
+        \item 175 references name no file at all. Three base conventions coexist.
+        \item 132 match a filename somewhere --- \textbf{a candidate, not a resolution.}
+        \item The measurement found a defect in itself, corrected it, and said so.
+        \item Three rulings came out of these numbers. Measurement changed the design.
+    \end{itemize}
+\end{frame}
+
+\section{Module: what the system refuses}
+
+\begin{frame}{It does not infer ownership}
+    \begin{itemize}
+        \item A model may guess which initiative a document concerns.
+        \item It may not decide which engagement it belongs to, or who owns it.
+        \item Those come from where the file is, and from a person.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{It does not judge rights, and does not forget}
+    \begin{itemize}
+        \item Fair use, citation and plagiarism are human judgements.
+        \item \textbf{The value of the record is knowing when the judgement is hard.}
+        \item A destroyed or unreachable ancestor keeps its reference and says so.
+              A record that quietly dropped them would be easier to read and worth
+              nothing.
+        \item Automate the tedious and falsifiable. Reserve the judgement.
+    \end{itemize}
+\end{frame}
+\fi
+
+\end{document}
